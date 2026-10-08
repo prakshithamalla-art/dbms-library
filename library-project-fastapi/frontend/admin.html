@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — Archives</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="mark">Ar</div>
+      <div>
+        <h1>Archives Admin</h1>
+        <p>Library & Archives Portal</p>
+      </div>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-label">Manage</div>
+      <div class="nav-item active">Catalogue</div>
+      <div class="nav-item" onclick="document.getElementById('membersPanel').scrollIntoView({behavior:'smooth'})">Members</div>
+      <div class="nav-item" onclick="document.getElementById('reservationsPanel').scrollIntoView({behavior:'smooth'})">Reservations</div>
+      <div class="nav-item" onclick="document.getElementById('finesPanel').scrollIntoView({behavior:'smooth'})">Fines</div>
+    </div>
+
+    <div class="sidebar-foot">
+      <div class="user-chip">
+        <div class="avatar" id="avatarInitials">–</div>
+        <div class="who">
+          <div class="name" id="userName">–</div>
+          <div class="role" id="userRole">–</div>
+        </div>
+      </div>
+      <button class="btn btn-ghost btn-block" onclick="logout()">Log out</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="page-head">
+      <h2>Catalogue overview</h2>
+      <div class="conn" id="connStatus">
+        <span class="dot" id="connDot"></span>
+        <span id="connLabel">Checking database…</span>
+      </div>
+    </div>
+
+    <section class="stats">
+      <div class="stat"><span class="stat-value" id="statBooks">–</span><div class="stat-label">Titles catalogued</div></div>
+      <div class="stat"><span class="stat-value" id="statMembers">–</span><div class="stat-label">Members</div></div>
+      <div class="stat"><span class="stat-value" id="statReservations">–</span><div class="stat-label">Active reservations</div></div>
+      <div class="stat"><span class="stat-value" id="statFines">–</span><div class="stat-label">Outstanding fines</div></div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h3>Catalogue</h3>
+        <button class="btn" id="toggleAddBook">+ Add title</button>
+      </div>
+      <form id="addBookForm" class="inline-form hidden">
+        <input type="text" id="bookTitle" placeholder="Title" required>
+        <input type="text" id="bookAuthor" placeholder="Author" required>
+        <input type="text" id="bookIsbn" placeholder="ISBN">
+        <input type="text" id="bookCategory" placeholder="Category">
+        <input type="number" id="bookCopies" placeholder="Copies" min="1" value="1" required>
+        <button type="submit" class="btn btn-primary">Save</button>
+      </form>
+      <table>
+        <thead><tr><th>Title</th><th>Author</th><th>Category</th><th>Available</th><th></th></tr></thead>
+        <tbody id="booksBody"><tr><td colspan="5" class="empty">Loading from MySQL…</td></tr></tbody>
+      </table>
+    </section>
+
+    <section class="panel-row">
+      <div class="panel" id="membersPanel">
+        <div class="panel-head">
+          <h3>Members</h3>
+          <button class="btn" id="toggleAddMember">+ Add member</button>
+        </div>
+        <form id="addMemberForm" class="inline-form hidden">
+          <input type="text" id="memberName" placeholder="Full name" required>
+          <input type="email" id="memberEmail" placeholder="Email" required>
+          <input type="text" id="memberPhone" placeholder="Phone">
+          <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+        <table>
+          <thead><tr><th>Name</th><th>Email</th><th>Phone</th><th></th></tr></thead>
+          <tbody id="membersBody"><tr><td colspan="4" class="empty">Loading…</td></tr></tbody>
+        </table>
+      </div>
+
+      <div class="panel" id="reservationsPanel">
+        <div class="panel-head">
+          <h3>Reservations</h3>
+          <button class="btn" id="toggleAddReservation">+ New</button>
+        </div>
+        <form id="addReservationForm" class="inline-form hidden">
+          <select id="resvMember" required></select>
+          <select id="resvBook" required></select>
+          <input type="date" id="resvDue" required>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+        <table>
+          <thead><tr><th>Member</th><th>Book</th><th>Due</th><th>Status</th><th></th></tr></thead>
+          <tbody id="reservationsBody"><tr><td colspan="5" class="empty">Loading…</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel" id="finesPanel">
+      <div class="panel-head"><h3>Fines</h3></div>
+      <table>
+        <thead><tr><th>Member</th><th>Book</th><th>Amount</th><th>Status</th><th></th></tr></thead>
+        <tbody id="finesBody"><tr><td colspan="5" class="empty">Loading…</td></tr></tbody>
+      </table>
+    </section>
+  </main>
+</div>
+
+<script src="common.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>

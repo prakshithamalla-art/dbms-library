@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Library — Archives</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="mark">Ar</div>
+      <div>
+        <h1>My Library</h1>
+        <p>Archives Member Portal</p>
+      </div>
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-label">Browse</div>
+      <div class="nav-item active">Catalogue</div>
+      <div class="nav-item" onclick="document.getElementById('myReservationsPanel').scrollIntoView({behavior:'smooth'})">My reservations</div>
+      <div class="nav-item" onclick="document.getElementById('myFinesPanel').scrollIntoView({behavior:'smooth'})">My fines</div>
+    </div>
+
+    <div class="sidebar-foot">
+      <div class="user-chip">
+        <div class="avatar" id="avatarInitials">–</div>
+        <div class="who">
+          <div class="name" id="userName">–</div>
+          <div class="role" id="userRole">–</div>
+        </div>
+      </div>
+      <button class="btn btn-ghost btn-block" onclick="logout()">Log out</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="page-head">
+      <h2>Welcome back</h2>
+      <div class="conn" id="connStatus">
+        <span class="dot" id="connDot"></span>
+        <span id="connLabel">Checking database…</span>
+      </div>
+    </div>
+
+    <section class="stats">
+      <div class="stat"><span class="stat-value" id="statActive">–</span><div class="stat-label">Books you have out</div></div>
+      <div class="stat"><span class="stat-value" id="statFinesOwed">–</span><div class="stat-label">Fines owed</div></div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h3>Catalogue</h3>
+        <button class="btn" id="toggleReserve">+ Reserve a book</button>
+      </div>
+      <form id="reserveForm" class="inline-form hidden">
+        <select id="resvBook" required></select>
+        <input type="date" id="resvDue" required>
+        <button type="submit" class="btn btn-primary">Reserve</button>
+      </form>
+      <table>
+        <thead><tr><th>Title</th><th>Author</th><th>Category</th><th>Available</th></tr></thead>
+        <tbody id="booksBody"><tr><td colspan="4" class="empty">Loading from MySQL…</td></tr></tbody>
+      </table>
+    </section>
+
+    <section class="panel" id="myReservationsPanel">
+      <div class="panel-head"><h3>My reservations</h3></div>
+      <table>
+        <thead><tr><th>Book</th><th>Due</th><th>Status</th></tr></thead>
+        <tbody id="reservationsBody"><tr><td colspan="3" class="empty">Loading…</td></tr></tbody>
+      </table>
+    </section>
+
+    <section class="panel" id="myFinesPanel">
+      <div class="panel-head"><h3>My fines</h3></div>
+      <table>
+        <thead><tr><th>Book</th><th>Amount</th><th>Status</th></tr></thead>
+        <tbody id="finesBody"><tr><td colspan="3" class="empty">Loading…</td></tr></tbody>
+      </table>
+    </section>
+  </main>
+</div>
+
+<script src="common.js"></script>
+<script src="user.js"></script>
+</body>
+</html>

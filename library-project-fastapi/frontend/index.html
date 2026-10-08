@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Archives — Library & Archives</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#faf7f2;--card:#fff;--ink:#1f1b16;--dim:#5f584e;--line:#e6dfd3;--brand:#8a3b12;--brand-d:#6d2d0d;--tint:#f4e7dc;--ok:#1d6b3a;--okb:#e0f2e6;--bad:#a61e1e;--badb:#fbe4e4;--warn:#7a5200;--warnb:#fdf0d0;--r:10px}
+@media(prefers-color-scheme:dark){:root{--bg:#16130f;--card:#201c17;--ink:#f3ede3;--dim:#b3aa9b;--line:#3a332a;--brand:#e58a55;--brand-d:#f0a577;--tint:#2d2218;--ok:#7fd39b;--okb:#17301f;--bad:#ff9b9b;--badb:#3a1b1b;--warn:#f2c86a;--warnb:#382c10}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,sans-serif}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.2;margin:0 0 .5em}h1{font-size:clamp(2rem,5vw,3.4rem)}h2{font-size:1.6rem}h3{font-size:1.15rem}
+a{color:var(--brand)}:focus-visible{outline:3px solid var(--brand);outline-offset:2px}
+.skip{position:absolute;left:-999px;background:var(--brand);color:#fff;padding:.6rem 1rem;z-index:99}.skip:focus{left:8px;top:8px}
+header{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}
+.bar{max-width:1100px;margin:auto;padding:.7rem 1.2rem;display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
+.logo{font:700 1.3rem Fraunces,serif;color:var(--ink);text-decoration:none;margin-right:auto}.logo span{color:var(--brand)}
+nav{display:flex;gap:.3rem;flex-wrap:wrap;align-items:center}nav a{padding:.45rem .8rem;border-radius:8px;text-decoration:none;color:var(--ink)}nav a:hover,nav a[aria-current=page]{background:var(--tint);color:var(--brand)}
+.wrap{max-width:1100px;margin:auto;padding:1.5rem 1.2rem 4rem}
+.btn{display:inline-block;border:1px solid var(--brand);background:transparent;color:var(--brand);padding:.55rem 1rem;border-radius:8px;font:500 .95rem Inter,sans-serif;cursor:pointer;text-decoration:none}
+.btn:hover{background:var(--tint)}.btn.p{background:var(--brand);color:#fff}.btn.p:hover{background:var(--brand-d)}.btn.d{border-color:var(--bad);color:var(--bad)}.btn.s{padding:.3rem .65rem;font-size:.85rem}
+.hero{background:linear-gradient(135deg,var(--tint),var(--bg));border-radius:16px;padding:clamp(1.5rem,5vw,4rem);margin-bottom:2rem;border:1px solid var(--line)}
+.hero p{max-width:55ch;color:var(--dim);font-size:1.1rem}
+.search{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1.2rem}.search input{flex:1;min-width:220px}
+input,select{font:inherit;padding:.6rem .75rem;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}
+label{display:block;font-weight:500;font-size:.9rem;margin:.8rem 0 .25rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.1rem}
+.book{display:flex;flex-direction:column;gap:.3rem}.book .cover{height:8px;border-radius:4px;background:var(--brand);margin-bottom:.5rem}.book small{color:var(--dim)}.book .btn{margin-top:auto;align-self:flex-start}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1rem;margin:1rem 0}.stat b{display:block;font:700 2rem Fraunces,serif;color:var(--brand)}
+.tabs{display:flex;gap:.3rem;border-bottom:1px solid var(--line);margin:1rem 0;flex-wrap:wrap}.tabs a{padding:.6rem 1rem;text-decoration:none;color:var(--dim);border-bottom:3px solid transparent}.tabs a[aria-current=page]{color:var(--brand);border-color:var(--brand);font-weight:600}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--card)}table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:.65rem .9rem;border-bottom:1px solid var(--line);white-space:nowrap}th{font-size:.8rem;color:var(--dim);text-transform:uppercase;letter-spacing:.04em}tr:last-child td{border:0}
+.badge{padding:.15rem .6rem;border-radius:99px;font-size:.8rem;font-weight:600}.b-ok{background:var(--okb);color:var(--ok)}.b-bad{background:var(--badb);color:var(--bad)}.b-warn{background:var(--warnb);color:var(--warn)}
+.row{display:flex;gap:.6rem;flex-wrap:wrap;align-items:end;margin:.8rem 0}.row>div{flex:1;min-width:150px}.row label{margin-top:0}.row input,.row select{width:100%}
+.auth{max-width:420px;margin:2rem auto}.auth input{width:100%}.feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin:2rem 0}
+footer{border-top:1px solid var(--line);color:var(--dim);text-align:center;padding:1.5rem;font-size:.9rem}
+dialog{border:1px solid var(--line);border-radius:var(--r);background:var(--card);color:var(--ink);max-width:380px;width:92%}dialog::backdrop{background:#0008}
+#toast{position:fixed;bottom:1rem;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:.7rem 1.2rem;border-radius:8px;z-index:50}#toast:empty{display:none}#toast.err{background:var(--bad);color:#fff}
+.empty{color:var(--dim);padding:1rem}
+@media(prefers-reduced-motion:no-preference){.card{transition:box-shadow .2s,transform .2s}.book:hover{box-shadow:0 6px 18px #0002;transform:translateY(-2px)}}
+</style>
+</head>
+<body>
+<a class="skip" href="#app">Skip to main content</a>
+<header><div class="bar"><a class="logo" href="#/">Ar<span>chives</span></a><nav id="nav" aria-label="Main"></nav></div></header>
+<main id="app" class="wrap" tabindex="-1"></main>
+<footer>© Archives Library &amp; Archives Portal · 25CS1302E</footer>
+<div id="toast" role="status" aria-live="polite"></div>
+<dialog id="dlg" aria-labelledby="dt"><form method="dialog" data-form="reserve"><h3 id="dt">Reserve book</h3><p id="dbook"></p><label for="due">Return by</label><input type="date" id="due" required><div class="row"><button class="btn p" value="ok">Confirm</button><button class="btn" value="cancel" formnovalidate>Cancel</button></div></form></dialog>
+<script>
+const API='http://localhost:8000/api';
+const $=(s,r=document)=>r.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fd=d=>new Date(d).toLocaleDateString(undefined,{day:'numeric',month:'short',year:'numeric'});
+const money=n=>'₹'+Number(n).toFixed(2);
+let me=JSON.parse(localStorage.getItem('libraryUser')||'null'),books=[],pending=null;
+async function api(p,o={}){const r=await fetch(API+p,{...o,headers:{'Content-Type':'application/json'},body:o.body?JSON.stringify(o.body):undefined});let d=null;try{d=await r.json()}catch{}if(!r.ok)throw new Error(typeof d?.detail==='string'?d.detail:'Request failed');return d}
+function toast(m,e){const t=$('#toast');t.textContent=m;t.className=e?'err':'';clearTimeout(toast.t);toast.t=setTimeout(()=>t.textContent='',4000)}
+const badge=r=>{const late=r.status==='ACTIVE'&&new Date(r.due_date)<new Date(new Date().toDateString());return late?'<span class="badge b-bad">Overdue</span>':r.status==='ACTIVE'?'<span class="badge b-warn">On loan</span>':'<span class="badge b-ok">Returned</span>'};
+const table=(h,rows)=>rows.length?`<div class="tw"><table><thead><tr>${h.map(x=>`<th scope="col">${x}</th>`).join('')}</tr></thead><tbody>${rows.join('')}</tbody></table></div>`:'<p class="empty">Nothing here yet.</p>';
+const tabs=(base,items,cur)=>`<div class="tabs" role="navigation" aria-label="Section">${items.map(([k,l])=>`<a href="#/${base}/${k}" ${k===cur?'aria-current="page"':''}>${l}</a>`).join('')}</div>`;
+
+function renderNav(h){const l=(p,t)=>`<a href="#/${p}" ${h.startsWith('/'+p)&&p||h==='/'&&!p?'aria-current="page"':''}>${t}</a>`;
+$('#nav').innerHTML=l('','Home')+l('catalogue','Catalogue')+(me?l(me.role==='admin'?'admin':'member',me.role==='admin'?'Admin portal':'My library')+`<button class="btn s" data-act="logout">Sign out (${esc(me.name.split(' ')[0])})</button>`:l('login','Sign in')+'<a class="btn p s" href="#/signup">Join free</a>')}
+
+const bookCard=b=>`<article class="card book"><div class="cover" aria-hidden="true"></div><h3>${esc(b.title)}</h3><small>${esc(b.author)} · ${esc(b.category||'General')}</small><span class="badge ${b.available_copies?'b-ok':'b-bad'}">${b.available_copies?b.available_copies+' of '+b.total_copies+' available':'All copies out'}</span>${
+b.available_copies?(me?.role==='member'?`<button class="btn s p" data-act="reserve" data-id="${b.book_id}">Reserve</button>`:!me?'<a class="btn s" href="#/login">Sign in to reserve</a>':''):''}</article>`;
+
+const V={
+async home(){books=await api('/books');return`<section class="hero"><h1>Your library, open around the clock.</h1><p>Search the catalogue, reserve a title in seconds, and keep track of every loan and fine from one place.</p><form class="search" role="search" data-form="hsearch"><label class="sr" for="q" style="position:absolute;left:-999px">Search books</label><input id="q" type="search" placeholder="Search by title, author or category"><button class="btn p">Search</button></form></section>
+<div class="stats"><div class="card stat"><b>${books.length}</b>Titles catalogued</div><div class="card stat"><b>${books.reduce((s,b)=>s+b.available_copies,0)}</b>Copies available now</div><div class="card stat"><b>${new Set(books.map(b=>b.category).filter(Boolean)).size}</b>Categories</div></div>
+<h2>Recently added</h2><div class="grid">${books.slice(-4).reverse().map(bookCard).join('')}</div>
+<div class="feat"><div class="card"><h3>Reserve online</h3><p>Pick a book and a return date. Stock updates instantly.</p></div><div class="card"><h3>Track your loans</h3><p>See due dates, overdue items and returns in your member portal.</p></div><div class="card"><h3>Clear fines</h3><p>Every fine is itemised by book, with paid or unpaid status.</p></div></div>`},
+async catalogue(){books=await api('/books');const cats=[...new Set(books.map(b=>b.category).filter(Boolean))];return`<h1>Catalogue</h1><div class="row"><div><label for="cq">Search</label><input id="cq" type="search" placeholder="Title or author" value="${esc(sessionStorage.q||'')}"></div><div><label for="cc">Category</label><select id="cc"><option value="">All</option>${cats.map(c=>`<option>${esc(c)}</option>`).join('')}</select></div></div><p id="cnt" aria-live="polite"></p><div class="grid" id="cg"></div>`},
+login(){return`<div class="card auth"><h1>Welcome back</h1><form data-form="login"><label for="e">Email</label><input id="e" type="email" required autocomplete="username"><label for="p">Password</label><input id="p" type="password" required autocomplete="current-password"><p><button class="btn p" style="width:100%">Sign in</button></p></form><p>New here? <a href="#/signup">Create an account</a></p></div>`},
+signup(){return`<div class="card auth"><h1>Join the library</h1><form data-form="signup"><label for="n">Full name</label><input id="n" required autocomplete="name"><label for="e">Email</label><input id="e" type="email" required autocomplete="username"><label for="ph">Phone (optional)</label><input id="ph" type="tel" autocomplete="tel"><label for="p">Password (min 6 characters)</label><input id="p" type="password" minlength="6" required autocomplete="new-password"><p><button class="btn p" style="width:100%">Create account</button></p></form><p>Already a member? <a href="#/login">Sign in</a></p></div>`},
+async member(sec='loans'){if(me?.role!=='member')return go('/login');const [l,f]=await Promise.all([api(`/members/${me.member_id}/reservations`),api(`/members/${me.member_id}/fines`)]);const owed=f.filter(x=>!x.paid).reduce((s,x)=>s+Number(x.amount),0);
+let body=sec==='fines'?table(['Book','Amount','Status'],f.map(x=>`<tr><td>${esc(x.book_title)}</td><td>${money(x.amount)}</td><td><span class="badge ${x.paid?'b-ok':'b-bad'}">${x.paid?'Paid':'Unpaid'}</span></td></tr>`)):table(['Book','Reserved','Due','Status'],l.map(x=>`<tr><td>${esc(x.book_title)}</td><td>${fd(x.reserved_at)}</td><td>${fd(x.due_date)}</td><td>${badge(x)}</td></tr>`));
+return`<h1>Hello, ${esc(me.name)}</h1><div class="stats"><div class="card stat"><b>${l.filter(x=>x.status==='ACTIVE').length}</b>Books on loan</div><div class="card stat"><b>${money(owed)}</b>Fines owed</div><div class="card stat"><b>${l.length}</b>Total reservations</div></div><p><a class="btn p" href="#/catalogue">Browse &amp; reserve</a></p>${tabs('member',[['loans','My loans'],['fines','My fines']],sec)}${body}`},
+async admin(sec='overview'){if(me?.role!=='admin')return go('/login');
+const [b,m,r,f]=await Promise.all([api('/books'),api('/members'),api('/reservations'),api('/fines')]);books=b;
+const owed=f.filter(x=>!x.paid).reduce((s,x)=>s+Number(x.amount),0);let body='';
+if(sec==='overview')body=`<div class="stats"><div class="card stat"><b>${b.length}</b>Titles</div><div class="card stat"><b>${m.length}</b>Members</div><div class="card stat"><b>${r.filter(x=>x.status==='ACTIVE').length}</b>Active loans</div><div class="card stat"><b>${money(owed)}</b>Outstanding fines</div></div><h2>Latest loans</h2>${table(['Member','Book','Due','Status'],r.slice(-5).reverse().map(x=>`<tr><td>${esc(x.member_name)}</td><td>${esc(x.book_title)}</td><td>${fd(x.due_date)}</td><td>${badge(x)}</td></tr>`))}`;
+if(sec==='books')body=`<form class="card row" data-form="addbook"><div><label for="bt">Title</label><input id="bt" required></div><div><label for="ba">Author</label><input id="ba" required></div><div><label for="bi">ISBN</label><input id="bi"></div><div><label for="bc">Category</label><input id="bc"></div><div><label for="bn">Copies</label><input id="bn" type="number" min="1" value="1" required></div><button class="btn p">Add title</button></form>${table(['Title','Author','Category','Available',''],b.map(x=>`<tr><td>${esc(x.title)}</td><td>${esc(x.author)}</td><td>${esc(x.category||'—')}</td><td>${x.available_copies}/${x.total_copies}</td><td><button class="btn d s" data-act="delbook" data-id="${x.book_id}" aria-label="Remove ${esc(x.title)}">Remove</button></td></tr>`))}`;
+if(sec==='members')body=`<form class="card row" data-form="addmember"><div><label for="mn">Full name</label><input id="mn" required></div><div><label for="me">Email</label><input id="me" type="email" required></div><div><label for="mp">Phone</label><input id="mp"></div><div><label for="mw">Login password</label><input id="mw" type="password" minlength="6" autocomplete="new-password"></div><button class="btn p">Add member</button></form>${table(['Name','Email','Phone',''],m.map(x=>`<tr><td>${esc(x.name)}</td><td>${esc(x.email)}</td><td>${esc(x.phone||'—')}</td><td><button class="btn d s" data-act="delmember" data-id="${x.member_id}" aria-label="Remove ${esc(x.name)}">Remove</button></td></tr>`))}`;
+if(sec==='loans')body=`<form class="card row" data-form="addloan"><div><label for="lm">Member</label><select id="lm" required>${m.map(x=>`<option value="${x.member_id}">${esc(x.name)}</option>`).join('')}</select></div><div><label for="lb">Book</label><select id="lb" required>${b.filter(x=>x.available_copies>0).map(x=>`<option value="${x.book_id}">${esc(x.title)}</option>`).join('')}</select></div><div><label for="ld">Due date</label><input id="ld" type="date" required></div><button class="btn p">Create</button></form>${table(['Member','Book','Due','Status','Actions'],r.map(x=>`<tr><td>${esc(x.member_name)}</td><td>${esc(x.book_title)}</td><td>${fd(x.due_date)}</td><td>${badge(x)}</td><td>${x.status==='ACTIVE'?`<button class="btn s" data-act="return" data-id="${x.reservation_id}">Mark returned</button> `:''}<button class="btn d s" data-act="delloan" data-id="${x.reservation_id}">Delete</button></td></tr>`))}`;
+if(sec==='fines')body=`<form class="card row" data-form="addfine"><div><label for="fr">Loan</label><select id="fr" required>${r.map(x=>`<option value="${x.reservation_id}">#${x.reservation_id} ${esc(x.member_name)} — ${esc(x.book_title)}</option>`).join('')}</select></div><div><label for="fa">Amount (₹)</label><input id="fa" type="number" min="0" step="0.5" required></div><button class="btn p">Add fine</button></form>${table(['Member','Book','Amount','Status',''],f.map(x=>`<tr><td>${esc(x.member_name)}</td><td>${esc(x.book_title)}</td><td>${money(x.amount)}</td><td><span class="badge ${x.paid?'b-ok':'b-bad'}">${x.paid?'Paid':'Unpaid'}</span></td><td><button class="btn s" data-act="fine" data-id="${x.fine_id}">${x.paid?'Mark unpaid':'Mark paid'}</button></td></tr>`))}`;
+return`<h1>Admin portal</h1>${tabs('admin',[['overview','Overview'],['books','Books'],['members','Members'],['loans','Loans'],['fines','Fines']],sec)}${body}`}
+};
+
+function go(p){location.hash='#'+p}
+async function route(){const h=location.hash.slice(1)||'/';const [,p0,sec]=h.split('/');const pg=p0||'home';renderNav(h);const app=$('#app');
+try{const out=await (V[pg]||V.home)(sec);if(typeof out==='string'){app.innerHTML=out;document.title=(pg==='home'?'Home':pg[0].toUpperCase()+pg.slice(1))+' — Archives';if(pg==='catalogue')filter();app.focus({preventScroll:true});scrollTo(0,0)}}
+catch(e){app.innerHTML=`<div class="card"><h2>Can't reach the library server</h2><p>Start the backend with <code>uvicorn main:app --port 8000</code> and refresh. (${esc(e.message)})</p></div>`}}
+function filter(){const q=($('#cq').value||'').toLowerCase(),c=$('#cc').value;sessionStorage.q=$('#cq').value;const r=books.filter(b=>(!c||b.category===c)&&(b.title+b.author+(b.category||'')).toLowerCase().includes(q));$('#cg').innerHTML=r.map(bookCard).join('');$('#cnt').textContent=r.length+' title'+(r.length===1?'':'s')+' found'}
+addEventListener('hashchange',route);addEventListener('input',e=>{if(e.target.id==='cq'||e.target.id==='cc')filter()});
+
+addEventListener('click',async e=>{const b=e.target.closest('[data-act]');if(!b)return;const a=b.dataset.act,id=b.dataset.id;
+try{if(a==='logout'){localStorage.removeItem('libraryUser');me=null;go('/');route();return}
+if(a==='reserve'){pending=books.find(x=>x.book_id==id);$('#dbook').textContent=pending.title;const d=new Date(Date.now()+14*864e5);$('#due').value=d.toISOString().slice(0,10);$('#due').min=new Date().toISOString().slice(0,10);$('#dlg').showModal();return}
+const ok=m=>!m||confirm(m);
+const M={delbook:['Remove this title?',()=>api('/books/'+id,{method:'DELETE'})],delmember:['Remove this member?',()=>api('/members/'+id,{method:'DELETE'})],delloan:['Delete this loan record?',()=>api('/reservations/'+id,{method:'DELETE'})],return:['',()=>api(`/reservations/${id}/return`,{method:'PATCH'})],fine:['',()=>api(`/fines/${id}/toggle-paid`,{method:'PATCH'})]}[a];
+if(M&&ok(M[0])){await M[1]();toast('Done');route()}}catch(er){toast(er.message,1)}});
+
+addEventListener('submit',async e=>{const f=e.target.dataset.form;if(!f)return;e.preventDefault();const v=id=>$('#'+id)?.value;
+try{if(f==='hsearch'){sessionStorage.q=v('q');go('/catalogue')}
+if(f==='reserve'){if(e.submitter?.value!=='ok'){$('#dlg').close();return}await api('/reservations',{method:'POST',body:{member_id:me.member_id,book_id:pending.book_id,due_date:v('due')}});$('#dlg').close();toast('Reserved “'+pending.title+'”');route()}
+if(f==='login'||f==='signup'){const body=f==='login'?{email:v('e'),password:v('p')}:{name:v('n'),email:v('e'),phone:v('ph')||null,password:v('p')};me=await api('/auth/'+f,{method:'POST',body});localStorage.setItem('libraryUser',JSON.stringify(me));toast('Welcome, '+me.name);go(me.role==='admin'?'/admin':'/member')}
+if(f==='addbook'){await api('/books',{method:'POST',body:{title:v('bt'),author:v('ba'),isbn:v('bi')||null,category:v('bc')||null,total_copies:+v('bn')}});toast('Title added');route()}
+if(f==='addmember'){await api('/members',{method:'POST',body:{name:v('mn'),email:v('me'),phone:v('mp')||null,password:v('mw')||null}});toast('Member added');route()}
+if(f==='addloan'){await api('/reservations',{method:'POST',body:{member_id:+v('lm'),book_id:+v('lb'),due_date:v('ld')}});toast('Loan created');route()}
+if(f==='addfine'){await api('/fines',{method:'POST',body:{reservation_id:+v('fr'),amount:+v('fa')}});toast('Fine added');route()}}
+catch(er){toast(er.message,1)}});
+route();
+</script>
+</body>
+</html>
